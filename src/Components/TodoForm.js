@@ -2,25 +2,27 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
-const CreateTodo = () => {
+export const TodoForm = ({ todo }) => {
 
-    // Enregister les informations du formulaire :
-    // register a mettre dans les inputs :
-    // handleSubmit à mettre dans la fonction onSubmit : 
-    const { register, handleSubmit } = useForm();
+    // Editer les informations du formulaire :
+    // defaultValues permet de récupérer les informations existantes : 
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            text: todo ? todo.text : ""
+        }
+    });
     // Redirection après submit : 
     const history = useHistory();
 
     const onSubmit = handleSubmit((data) => {
         alert(JSON.stringify(data));
-        // redirection au submit
         history.push('/');
     });
-    
+
     return(
         <div className="create-page">
             <div className="mt-3">
-                <h3>Create Todo Item</h3>
+                <h3>Edit Todo Item</h3>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label htmlFor="text">Text</label>
@@ -34,5 +36,3 @@ const CreateTodo = () => {
         </div>
     )
 }
-
-export default CreateTodo;
