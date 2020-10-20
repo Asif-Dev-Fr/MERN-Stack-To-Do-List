@@ -1,35 +1,28 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { TodoForm } from './TodoForm';
 
 const CreateTodo = () => {
 
     // Enregister les informations du formulaire :
     // register a mettre dans les inputs :
     // handleSubmit à mettre dans la fonction onSubmit : 
-    const { register, handleSubmit } = useForm();
+    // const { register, handleSubmit } = useForm();
     // Redirection après submit : 
-    const history = useHistory();
+    // const history = useHistory();
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = /*handleSubmit(*/(data) => {
         alert(JSON.stringify(data));
         // redirection au submit
-        history.push('/');
-    });
-    
-    return(
+        // history.push('/');
+    }/*)*/;
+
+    return (
         <div className="create-page">
             <div className="mt-3">
-                <h3>Create Todo Item</h3>
-                <form onSubmit={onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="text">Text</label>
-                        <input ref={register} id="text" type="text" name="text" className="form-control"></input>
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-success">Create Todo</button>
-                    </div>
-                </form>
+                <h3>Edit Todo Item</h3>
+                <TodoForm  onSubmit={onSubmit} />
             </div>
         </div>
     )

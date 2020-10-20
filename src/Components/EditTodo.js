@@ -10,8 +10,20 @@ const EditTodo = () => {
             text: "foo2"
         })
     }, []);
+
+    const onSubmit = (data) => {
+        alert(JSON.stringify(data));
+    }
     
-    return todo ? <TodoForm todo={todo} /> : <div>Loading</div>
+    return todo ? (
+            <div className="create-page">
+                <div className="mt-3">
+                    <h3>Edit Todo Item</h3>
+                    <TodoForm todo={todo} onSubmit={onSubmit} /> 
+                </div>
+            </div> )
+        
+        : (<div>Loading</div>)
 }
 
 export default EditTodo;
