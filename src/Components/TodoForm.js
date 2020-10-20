@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
-export const TodoForm = ({ todo, onSubmit }) => {
+export const TodoForm = ({ todo, onSubmit, validation }) => {
 
     // Editer les informations du formulaire :
     // defaultValues permet de récupérer les informations existantes : 
@@ -26,7 +26,7 @@ export const TodoForm = ({ todo, onSubmit }) => {
                 <input ref={register} id="text" type="text" name="text" className="form-control"></input>
             </div>
             <div className="form-group">
-                <button type="submit" className="btn btn-success">Save Todo</button>
+                <button type="submit" className="btn btn-success"> {validation} </button>
             </div>
         </form>
 

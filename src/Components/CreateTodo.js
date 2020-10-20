@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { TodoForm } from './TodoForm';
 
 const CreateTodo = () => {
 
+    const [ validation ] = useState('Create Todo');
+ 
     // Enregister les informations du formulaire :
     // register a mettre dans les inputs :
     // handleSubmit à mettre dans la fonction onSubmit : 
@@ -21,8 +23,8 @@ const CreateTodo = () => {
     return (
         <div className="create-page">
             <div className="mt-3">
-                <h3>Edit Todo Item</h3>
-                <TodoForm  onSubmit={onSubmit} />
+                <h3>Create Todo Item</h3>
+                <TodoForm  onSubmit={onSubmit} validation={validation} />
             </div>
         </div>
     )
