@@ -45,7 +45,7 @@ app.get("/:id", (req,res) =>{
     const id = req.params.id;
     Todo.findById(id, (err, todo) => {
         res.json(todo);
-    });
+    }); 
 });
 
 app.listen(PORT, () => {

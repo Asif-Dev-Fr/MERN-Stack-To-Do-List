@@ -16,7 +16,7 @@ const TodoList = () => {
     return(
         <div className="homepage">
             <div className="mt-3">
-                <h3>Todo List</h3>
+                <h3 className="text-center">Todo List</h3>
                 <table className="table table-striped mt-3">
                     <thead className="thead-dark">
                         <tr>
