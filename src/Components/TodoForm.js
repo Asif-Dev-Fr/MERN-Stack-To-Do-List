@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
 
 export const TodoForm = ({ todo, onSubmit, validation }) => {
 
@@ -11,12 +10,9 @@ export const TodoForm = ({ todo, onSubmit, validation }) => {
             text: todo ? todo.text : ""
         }
     });
-    // Redirection après submit : 
-    const history = useHistory();
 
     const submitHandler = handleSubmit((data) => {
         onSubmit(data);
-        history.push('/');
     });
 
     return (

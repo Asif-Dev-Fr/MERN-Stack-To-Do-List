@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { TodoForm } from './TodoForm';
+import { createTodo } from './Api';
 
 const CreateTodo = () => {
 
     const [ validation ] = useState('Create Todo');
+    const history = useHistory()
  
     // Enregister les informations du formulaire :
     // register a mettre dans les inputs :
@@ -14,11 +15,10 @@ const CreateTodo = () => {
     // Redirection après submit : 
     // const history = useHistory();
 
-    const onSubmit = /*handleSubmit(*/(data) => {
-        alert(JSON.stringify(data));
-        // redirection au submit
-        // history.push('/');
-    }/*)*/;
+    const onSubmit = async (data) => {
+        await createTodo(data);
+        history.push("/");
+    };
 
     return (
         <div className="create-page">

@@ -17,26 +17,23 @@ const PORT = 4000;
 const app = express();
 
 app.use(cors());
-app.use(express.json);
+app.use(express.json());
 
 app.get('/', (req, res) => {
-    Todo.find((err, todo)=> {
+    Todo.find((err, todos)=> {
         if(err) {
             console.log(err)
         } else {
-            res.json(todo);
+            res.json(todos);
         }
     })
 });
 
 app.post('/create', (req,res) => {
     const todo = new Todo(req.body); 
-    todo
-    .save()
-    .then((todo) => {
+    todo.save().then((todo) => {
         res.json(todo);
-    })
-    .catch((err) => {
+    }).catch((err) => {
         res.status(500).send(err.message);
     });
 });
@@ -48,6 +45,24 @@ app.get("/:id", (req,res) =>{
         res.json(todo);
     }); 
 });
+
+app.post("/:id", (req, res) => {
+    const id = req.params.id;
+    Todo.findById(id, (err, todo) => {
+      if (!todo) {
+        res.status(404).send("Todo not found");
+      } else {
+        todo.text = req.body.text;
+  
+        todo
+          .save()
+          .then((todo) => {
+            res.json(todo);
+          })
+          .catch((err) => res.status(500).send(err.message));
+      }
+    });
+  });
 
 app.listen(PORT, () => {
     console.log('Server is running on port : ' + PORT);
